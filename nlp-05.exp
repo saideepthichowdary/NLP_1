@@ -1,0 +1,819 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMCtXJRwQcfoMTAk20x9iwd",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/saideepthichowdary/NLP_1/blob/main/nlp-05.exp\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 2,
+      "metadata": {
+        "id": "1ux2SnSJVZk2"
+      },
+      "outputs": [],
+      "source": [
+        "paragraph = \"\"\"\n",
+        "Natural Language Processing (NLP) is a field of Artificial Intelligence\n",
+        "that focuses on the interaction between computers and humans through language.\n",
+        "It helps machines understand, interpret, and generate human language.\n",
+        "\"\"\"\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "!pip install nltk\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "HAyiWXtZWNiY",
+        "outputId": "5c45598d-f08f-438e-eae7-45d5f12df17e"
+      },
+      "execution_count": 3,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Requirement already satisfied: nltk in /usr/local/lib/python3.12/dist-packages (3.9.1)\n",
+            "Requirement already satisfied: click in /usr/local/lib/python3.12/dist-packages (from nltk) (8.3.1)\n",
+            "Requirement already satisfied: joblib in /usr/local/lib/python3.12/dist-packages (from nltk) (1.5.3)\n",
+            "Requirement already satisfied: regex>=2021.8.3 in /usr/local/lib/python3.12/dist-packages (from nltk) (2025.11.3)\n",
+            "Requirement already satisfied: tqdm in /usr/local/lib/python3.12/dist-packages (from nltk) (4.67.1)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "from nltk.tokenize import sent_tokenize\n"
+      ],
+      "metadata": {
+        "id": "ugqWBMnsWNoi"
+      },
+      "execution_count": 4,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nltk.download('punkt')\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Ov5S5CHlWNrR",
+        "outputId": "a2b87043-7087-4f7a-b6b0-800bfa116295"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package punkt to /root/nltk_data...\n",
+            "[nltk_data]   Package punkt is already up-to-date!\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 8
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "text = \"\"\"\n",
+        "Natural Language Processing is a branch of Artificial Intelligence.\n",
+        "It helps computers understand human language.\n",
+        "Sentence tokenization is an important step in NLP.\n",
+        "\"\"\"\n"
+      ],
+      "metadata": {
+        "id": "5jGqVgEZWNup"
+      },
+      "execution_count": 6,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nltk.download('punkt')\n",
+        "nltk.download('punkt_tab')\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "etIC5tomWeVa",
+        "outputId": "04a70cef-91f7-497a-c937-222661ef8d54"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package punkt to /root/nltk_data...\n",
+            "[nltk_data]   Package punkt is already up-to-date!\n",
+            "[nltk_data] Downloading package punkt_tab to /root/nltk_data...\n",
+            "[nltk_data]   Unzipping tokenizers/punkt_tab.zip.\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 10
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.tokenize import sent_tokenize\n"
+      ],
+      "metadata": {
+        "id": "utOOrr55WrNw"
+      },
+      "execution_count": 11,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "text = \"\"\"\n",
+        "Natural Language Processing is a branch of Artificial Intelligence.\n",
+        "It helps computers understand human language.\n",
+        "Sentence tokenization is an important step in NLP.\n",
+        "\"\"\"\n"
+      ],
+      "metadata": {
+        "id": "Z51RTmsuWtvo"
+      },
+      "execution_count": 12,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "sentences = sent_tokenize(text)\n",
+        "print(sentences)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "94o_B5l0WwpZ",
+        "outputId": "405c6bb6-c63c-4112-c50b-763f7641c8dd"
+      },
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['\\nNatural Language Processing is a branch of Artificial Intelligence.', 'It helps computers understand human language.', 'Sentence tokenization is an important step in NLP.']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.tokenize import word_tokenize\n"
+      ],
+      "metadata": {
+        "id": "woMX2hVYXald"
+      },
+      "execution_count": 14,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "words = word_tokenize(text)\n"
+      ],
+      "metadata": {
+        "id": "SCI1ylY5XbzP"
+      },
+      "execution_count": 15,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(words)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "BYLjuMNKXfYM",
+        "outputId": "6bfa5f43-9174-4710-b750-dbe41d4bd4c8"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Natural', 'Language', 'Processing', 'is', 'a', 'branch', 'of', 'Artificial', 'Intelligence', '.', 'It', 'helps', 'computers', 'understand', 'human', 'language', '.', 'Sentence', 'tokenization', 'is', 'an', 'important', 'step', 'in', 'NLP', '.']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "for w in words:\n",
+        "    print(w)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "UtB7IJbPXkJJ",
+        "outputId": "4932a52b-0a01-41de-e748-8460a89d10b9"
+      },
+      "execution_count": 17,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Natural\n",
+            "Language\n",
+            "Processing\n",
+            "is\n",
+            "a\n",
+            "branch\n",
+            "of\n",
+            "Artificial\n",
+            "Intelligence\n",
+            ".\n",
+            "It\n",
+            "helps\n",
+            "computers\n",
+            "understand\n",
+            "human\n",
+            "language\n",
+            ".\n",
+            "Sentence\n",
+            "tokenization\n",
+            "is\n",
+            "an\n",
+            "important\n",
+            "step\n",
+            "in\n",
+            "NLP\n",
+            ".\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.stem import PorterStemmer\n"
+      ],
+      "metadata": {
+        "id": "Vo5bd35xaEao"
+      },
+      "execution_count": 18,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "ps = PorterStemmer()\n"
+      ],
+      "metadata": {
+        "id": "qrvCOEdzaGzQ"
+      },
+      "execution_count": 19,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "stemmed_words = [ps.stem(word) for word in words]\n"
+      ],
+      "metadata": {
+        "id": "aERlsT5eaJC0"
+      },
+      "execution_count": 20,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(stemmed_words)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mNqg2X5SaMMJ",
+        "outputId": "9183ccc4-c039-4421-b5ec-f586d933759a"
+      },
+      "execution_count": 21,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['natur', 'languag', 'process', 'is', 'a', 'branch', 'of', 'artifici', 'intellig', '.', 'it', 'help', 'comput', 'understand', 'human', 'languag', '.', 'sentenc', 'token', 'is', 'an', 'import', 'step', 'in', 'nlp', '.']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "nltk.download('wordnet')\n",
+        "nltk.download('omw-1.4')\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "H0sycxglaUeT",
+        "outputId": "87e51a5c-2a83-487f-a17b-876d9b17d880"
+      },
+      "execution_count": 22,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package wordnet to /root/nltk_data...\n",
+            "[nltk_data] Downloading package omw-1.4 to /root/nltk_data...\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 22
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.stem import WordNetLemmatizer\n"
+      ],
+      "metadata": {
+        "id": "hXSLovnraXmX"
+      },
+      "execution_count": 23,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "lemmatizer = WordNetLemmatizer()\n"
+      ],
+      "metadata": {
+        "id": "V3AIWXteadAN"
+      },
+      "execution_count": 24,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "lemmatized_words = [lemmatizer.lemmatize(word) for word in words]\n"
+      ],
+      "metadata": {
+        "id": "gZiE3LQJagqu"
+      },
+      "execution_count": 25,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(lemmatized_words)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "m_ifCUlCakzX",
+        "outputId": "6d11d404-fff9-4896-9698-25d66e43bfb4"
+      },
+      "execution_count": 26,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Natural', 'Language', 'Processing', 'is', 'a', 'branch', 'of', 'Artificial', 'Intelligence', '.', 'It', 'help', 'computer', 'understand', 'human', 'language', '.', 'Sentence', 'tokenization', 'is', 'an', 'important', 'step', 'in', 'NLP', '.']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "nltk.download('averaged_perceptron_tagger')\n",
+        "nltk.download('averaged_perceptron_tagger_eng')\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4W1uO8oTakv6",
+        "outputId": "21dfc4de-4547-49ae-8772-53858a45b0ae"
+      },
+      "execution_count": 27,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package averaged_perceptron_tagger to\n",
+            "[nltk_data]     /root/nltk_data...\n",
+            "[nltk_data]   Unzipping taggers/averaged_perceptron_tagger.zip.\n",
+            "[nltk_data] Downloading package averaged_perceptron_tagger_eng to\n",
+            "[nltk_data]     /root/nltk_data...\n",
+            "[nltk_data]   Unzipping taggers/averaged_perceptron_tagger_eng.zip.\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 27
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk import pos_tag\n"
+      ],
+      "metadata": {
+        "id": "y8LtH44Pa0WS"
+      },
+      "execution_count": 28,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "pos_tags = pos_tag(words)\n"
+      ],
+      "metadata": {
+        "id": "foA2BmWMa4xM"
+      },
+      "execution_count": 29,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(pos_tags)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "pLbB4LA_a6zR",
+        "outputId": "84d8280a-638f-4607-f9f8-089d910a752e"
+      },
+      "execution_count": 31,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[('Natural', 'JJ'), ('Language', 'NNP'), ('Processing', 'NNP'), ('is', 'VBZ'), ('a', 'DT'), ('branch', 'NN'), ('of', 'IN'), ('Artificial', 'JJ'), ('Intelligence', 'NNP'), ('.', '.'), ('It', 'PRP'), ('helps', 'VBZ'), ('computers', 'NNS'), ('understand', 'VBP'), ('human', 'JJ'), ('language', 'NN'), ('.', '.'), ('Sentence', 'NNP'), ('tokenization', 'NN'), ('is', 'VBZ'), ('an', 'DT'), ('important', 'JJ'), ('step', 'NN'), ('in', 'IN'), ('NLP', 'NNP'), ('.', '.')]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "nltk.download('stopwords')\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LE4_k7PobDAX",
+        "outputId": "6b3f9467-a5e7-4489-bdf1-73b4ea912246"
+      },
+      "execution_count": 32,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package stopwords to /root/nltk_data...\n",
+            "[nltk_data]   Unzipping corpora/stopwords.zip.\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 32
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk.corpus import stopwords\n"
+      ],
+      "metadata": {
+        "id": "bxYWLGdZbF_e"
+      },
+      "execution_count": 33,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "stop_words = set(stopwords.words('english'))\n"
+      ],
+      "metadata": {
+        "id": "3MpriSFubIZF"
+      },
+      "execution_count": 34,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "filtered_words = [word for word in words if word.lower() not in stop_words]\n"
+      ],
+      "metadata": {
+        "id": "D372KJ52bKVm"
+      },
+      "execution_count": 35,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "print(filtered_words)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "wQ47u6KVbMgs",
+        "outputId": "c7f86d2f-aac6-4ca1-a111-5c09ff697abc"
+      },
+      "execution_count": 36,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "['Natural', 'Language', 'Processing', 'branch', 'Artificial', 'Intelligence', '.', 'helps', 'computers', 'understand', 'human', 'language', '.', 'Sentence', 'tokenization', 'important', 'step', 'NLP', '.']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "nltk.download('maxent_ne_chunker')\n",
+        "nltk.download('words')\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NaL02C2zbS8F",
+        "outputId": "8563204d-faa5-44a7-c3ea-53209559cf8e"
+      },
+      "execution_count": 37,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package maxent_ne_chunker to\n",
+            "[nltk_data]     /root/nltk_data...\n",
+            "[nltk_data]   Unzipping chunkers/maxent_ne_chunker.zip.\n",
+            "[nltk_data] Downloading package words to /root/nltk_data...\n",
+            "[nltk_data]   Unzipping corpora/words.zip.\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 37
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk import ne_chunk\n"
+      ],
+      "metadata": {
+        "id": "11-eejtLbWTB"
+      },
+      "execution_count": 38,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import nltk\n",
+        "nltk.download('maxent_ne_chunker_tab')\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "bFam6dEzbYPm",
+        "outputId": "6687069b-2493-4b71-f2c8-8877fecd01bc"
+      },
+      "execution_count": 40,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package maxent_ne_chunker_tab to\n",
+            "[nltk_data]     /root/nltk_data...\n",
+            "[nltk_data]   Unzipping chunkers/maxent_ne_chunker_tab.zip.\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 40
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "nltk.download('maxent_ne_chunker')\n",
+        "nltk.download('maxent_ne_chunker_tab')\n",
+        "nltk.download('words')\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "KM6Z6rTQbgqX",
+        "outputId": "a097da9c-6950-4daa-febd-2ea69ba5bb09"
+      },
+      "execution_count": 41,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stderr",
+          "text": [
+            "[nltk_data] Downloading package maxent_ne_chunker to\n",
+            "[nltk_data]     /root/nltk_data...\n",
+            "[nltk_data]   Package maxent_ne_chunker is already up-to-date!\n",
+            "[nltk_data] Downloading package maxent_ne_chunker_tab to\n",
+            "[nltk_data]     /root/nltk_data...\n",
+            "[nltk_data]   Package maxent_ne_chunker_tab is already up-to-date!\n",
+            "[nltk_data] Downloading package words to /root/nltk_data...\n",
+            "[nltk_data]   Package words is already up-to-date!\n"
+          ]
+        },
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "True"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 41
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "from nltk import ne_chunk\n",
+        "\n",
+        "ner_tree = ne_chunk(pos_tags)\n",
+        "print(ner_tree)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "6gwZwN7ObkR6",
+        "outputId": "7f86b5db-01c4-4a98-c7ac-e18274b811f9"
+      },
+      "execution_count": 42,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "(S\n",
+            "  Natural/JJ\n",
+            "  Language/NNP\n",
+            "  Processing/NNP\n",
+            "  is/VBZ\n",
+            "  a/DT\n",
+            "  branch/NN\n",
+            "  of/IN\n",
+            "  (ORGANIZATION Artificial/JJ Intelligence/NNP)\n",
+            "  ./.\n",
+            "  It/PRP\n",
+            "  helps/VBZ\n",
+            "  computers/NNS\n",
+            "  understand/VBP\n",
+            "  human/JJ\n",
+            "  language/NN\n",
+            "  ./.\n",
+            "  Sentence/NNP\n",
+            "  tokenization/NN\n",
+            "  is/VBZ\n",
+            "  an/DT\n",
+            "  important/JJ\n",
+            "  step/NN\n",
+            "  in/IN\n",
+            "  (ORGANIZATION NLP/NNP)\n",
+            "  ./.)\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
